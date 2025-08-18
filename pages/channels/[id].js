@@ -8,19 +8,19 @@ import UserContext from '~/lib/UserContext'
 
 const ChannelsPage = (props) => {
   const router = useRouter()
-  const { user, authLoaded, signOut } = useContext(UserContext)
+  const { user, userLoaded, signOut } = useContext(UserContext)
   const messagesEndRef = useRef(null)
 
   // Else load up the page
   const { id: channelId } = router.query
   const { messages, channels } = useStore({ channelId })
 
+  // Authentication guard - redirect to landing if not logged in
   useEffect(() => {
-    messagesEndRef.current.scrollIntoView({
-      block: 'start',
-      behavior: 'smooth',
-    })
-  }, [messages])
+    if (userLoaded && !user) {
+      router.push('/')
+    }
+  }, [userLoaded, user, router])
 
   // redirect to public channel when current channel is deleted
   useEffect(() => {
@@ -28,6 +28,38 @@ const ChannelsPage = (props) => {
       router.push('/channels/1')
     }
   }, [channels, channelId])
+
+  useEffect(() => {
+    if (messagesEndRef.current) {
+      messagesEndRef.current.scrollIntoView({
+        block: 'start',
+        behavior: 'smooth',
+      })
+    }
+  }, [messages])
+
+  // Show loading state while checking auth
+  if (!userLoaded) {
+    return (
+      <div className="min-h-screen bg-gray-50 flex items-center justify-center">
+        <div className="text-center">
+          <div className="animate-spin rounded-full h-12 w-12 border-b-2 border-indigo-600 mx-auto"></div>
+          <p className="mt-4 text-gray-600">Loading...</p>
+        </div>
+      </div>
+    )
+  }
+
+  // Redirect if not authenticated
+  if (!user) {
+    return (
+      <div className="min-h-screen bg-gray-50 flex items-center justify-center">
+        <div className="text-center">
+          <p className="text-gray-600">Redirecting to login...</p>
+        </div>
+      </div>
+    )
+  }
 
   // Render the channels and messages
   return (
