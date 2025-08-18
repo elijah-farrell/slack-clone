@@ -1,74 +1,47 @@
-import { useState } from 'react'
-import { supabase } from 'lib/Store'
+import Link from 'next/link'
 
 const Home = () => {
-  const [username, setUsername] = useState('')
-  const [password, setPassword] = useState('')
-
-  const handleLogin = async (type, username, password) => {
-    try {
-      const { error, data: { user } } =
-        type === 'LOGIN'
-          ? await supabase.auth.signInWithPassword({ email: username, password })
-          : await supabase.auth.signUp({ email: username, password })
-      // If the user doesn't exist here and an error hasn't been raised yet,
-      // that must mean that a confirmation email has been sent.
-      // NOTE: Confirming your email address is required by default.
-      if (error) {
-        alert('Error with auth: ' + error.message)
-      } else if (!user) alert('Signup successful, confirmation mail should be sent soon!')
-    } catch (error) {
-      console.log('error', error)
-      alert(error.error_description || error)
-    }
-  }
-
   return (
-    <div className="w-full h-full flex justify-center items-center p-4 bg-gray-300">
-      <div className="w-full sm:w-1/2 xl:w-1/3">
-        <div className="border-teal p-8 border-t-12 bg-white mb-6 rounded-lg shadow-lg bg-white">
-          <div className="mb-4">
-            <label className="font-bold text-grey-darker block mb-2">Email</label>
-            <input
-              type="text"
-              className="block appearance-none w-full bg-white border border-grey-light hover:border-grey px-2 py-2 rounded shadow"
-              placeholder="Your Username"
-              value={username}
-              onChange={(e) => setUsername(e.target.value)}
-            />
-          </div>
-          <div className="mb-4">
-            <label className="font-bold text-grey-darker block mb-2">Password</label>
-            <input
-              type="password"
-              className="block appearance-none w-full bg-white border border-grey-light hover:border-grey px-2 py-2 rounded shadow"
-              placeholder="Your password"
-              value={password}
-              onChange={(e) => setPassword(e.target.value)}
-            />
-          </div>
+    <div className="min-h-screen bg-gradient-to-br from-blue-50 to-indigo-100 flex flex-col justify-center py-12 sm:px-6 lg:px-8">
+      <div className="sm:mx-auto sm:w-full sm:max-w-md">
+        <h1 className="mt-6 text-center text-4xl font-extrabold text-gray-900">
+          Spark
+        </h1>
+        <p className="mt-2 text-center text-lg text-gray-600">
+          A modern real-time messaging platform built with Next.js and Supabase
+        </p>
+      </div>
 
-          <div className="flex flex-col gap-2">
-            <a
-              onClick={(e) => {
-                e.preventDefault()
-                handleLogin('SIGNUP', username, password)
-              }}
-              href={'/channels'}
-              className="bg-indigo-700 hover:bg-teal text-white py-2 px-4 rounded text-center transition duration-150 hover:bg-indigo-600 hover:text-white"
+      <div className="mt-8 sm:mx-auto sm:w-full sm:max-w-md">
+        <div className="bg-white py-8 px-4 shadow-xl sm:rounded-lg sm:px-10 border border-gray-200">
+          <div className="flex flex-col gap-4">
+            <Link
+              href="/signup"
+              className="w-full flex justify-center py-4 px-6 border border-transparent rounded-lg shadow-md text-base font-semibold text-white bg-gradient-to-r from-indigo-600 to-purple-600 hover:from-indigo-700 hover:to-purple-700 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-indigo-500 transition-all duration-200 transform hover:scale-105"
             >
-              Sign up
-            </a>
-            <a
-              onClick={(e) => {
-                e.preventDefault()
-                handleLogin('LOGIN', username, password)
-              }}
-              href={'/channels'}
-              className="border border-indigo-700 text-indigo-700 py-2 px-4 rounded w-full text-center transition duration-150 hover:bg-indigo-700 hover:text-white"
+              Get Started - Create Account
+            </Link>
+            
+            <Link
+              href="/login"
+              className="w-full flex justify-center py-2 px-6 border-2 border-indigo-600 rounded-lg shadow-md text-base font-semibold text-indigo-600 bg-white hover:bg-indigo-50 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-indigo-500 transition-all duration-200 transform hover:scale-105"
             >
-              Login
-            </a>
+              Sign In to Existing Account
+            </Link>
+            <div className="relative">
+              <div className="absolute inset-0 flex items-center">
+                <div className="w-full border-t border-gray-300" />
+              </div>
+              <div className="relative flex justify-center text-sm">
+                <span className="px-2 bg-white text-gray-500">or</span>
+              </div>
+            </div>
+            <Link
+              href="/demo"
+              className="w-full flex justify-center py-3 px-6 border-2 border-gray-300 rounded-lg shadow-sm text-base font-medium text-gray-700 bg-white hover:bg-gray-50 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-indigo-500 transition-all duration-200 transform hover:scale-105"
+            >
+              View as Guest ↗
+            </Link>
           </div>
         </div>
       </div>
