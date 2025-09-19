@@ -136,17 +136,14 @@ const Signup = () => {
       <div className="absolute top-4 left-4 z-10">
         <Link
           href="/"
-          legacyBehavior
+          className="inline-flex items-center px-4 py-2 text-sm font-medium text-gray-300 bg-black border border-red-500/20 rounded-md hover:bg-red-500/10 hover:text-red-400 focus:outline-none focus:ring-2 focus:ring-red-500 transition-colors font-geist"
         >
-          <a className="inline-flex items-center px-4 py-2 text-sm font-medium text-gray-300 bg-black border border-red-500/20 rounded-md hover:bg-red-500/10 hover:text-red-400 focus:outline-none focus:ring-2 focus:ring-red-500 transition-colors font-geist">
-            <svg className="w-4 h-4 mr-2" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-              <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M10 19l-7-7m0 0l7-7m-7 7h18" />
-            </svg>
-            Back to Home
-          </a>
+          <svg className="w-4 h-4 mr-2" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+            <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M10 19l-7-7m0 0l7-7m-7 7h18" />
+          </svg>
+          Back to Home
         </Link>
       </div>
-
       <div className="flex min-h-screen items-center justify-center py-12 px-6">
         <div className="w-full max-w-md">
           {/* Header */}
@@ -234,8 +231,8 @@ const Signup = () => {
                   <div className="text-sm text-red-700">{error}</div>
                   {error.includes('already exists') && (
                     <div className="mt-3 space-y-2">
-                      <Link href="/login">
-                        <span className="block text-sm text-indigo-600 hover:text-indigo-500 underline">
+                      <Link href="/login" legacyBehavior>
+                        <span className="block text-sm text-red-500 hover:text-red-400 underline">
                           Sign in to your account ↗
                         </span>
                       </Link>
@@ -246,8 +243,8 @@ const Signup = () => {
                   )}
                   {!error.includes('already exists') && (
                     <div className="mt-3">
-                      <Link href="/login">
-                        <span className="block text-sm text-indigo-600 hover:text-indigo-500 underline">
+                      <Link href="/login" legacyBehavior>
+                        <span className="block text-sm text-red-500 hover:text-red-400 underline">
                           Already have an account? Sign in here ↗
                         </span>
                       </Link>
@@ -293,11 +290,9 @@ const Signup = () => {
               <div className="mt-6">
                 <Link
                   href="/login"
-                  legacyBehavior
+                  className="w-full flex justify-center py-2 px-4 border border-red-500/20 rounded-md shadow-sm text-sm font-medium text-gray-300 bg-black hover:bg-red-500/10 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-red-500 font-geist"
                 >
-                  <a className="w-full flex justify-center py-2 px-4 border border-red-500/20 rounded-md shadow-sm text-sm font-medium text-gray-300 bg-black hover:bg-red-500/10 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-red-500 font-geist">
-                    Sign in
-                  </a>
+                  Sign in
                 </Link>
               </div>
             </div>
@@ -305,7 +300,7 @@ const Signup = () => {
         </div>
       </div>
     </div>
-  )
+  );
 }
 
 export default Signup

@@ -30,7 +30,7 @@ export function FAQSection() {
     {
       question: "Is Spark Chat secure?",
       answer:
-        "Spark Chat uses Supabase's built-in security features including Row Level Security, JWT authentication, and encrypted data transmission. It's suitable for team communication and personal use.",
+        "Spark Chat uses Supabase's built-in security features including Row Level Security, JWT authentication, and encrypted data transmission. It's suitable for public team communication.",
     },
   ]
 

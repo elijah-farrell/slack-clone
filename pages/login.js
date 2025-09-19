@@ -114,17 +114,14 @@ const Login = () => {
       <div className="absolute top-4 left-4 z-10">
         <Link
           href="/"
-          legacyBehavior
+          className="inline-flex items-center px-4 py-2 text-sm font-medium text-gray-300 bg-black border border-red-500/20 rounded-md hover:bg-red-500/10 hover:text-red-400 focus:outline-none focus:ring-2 focus:ring-red-500 transition-colors font-geist"
         >
-          <a className="inline-flex items-center px-4 py-2 text-sm font-medium text-gray-300 bg-black border border-red-500/20 rounded-md hover:bg-red-500/10 hover:text-red-400 focus:outline-none focus:ring-2 focus:ring-red-500 transition-colors font-geist">
-            <svg className="w-4 h-4 mr-2" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-              <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M10 19l-7-7m0 0l7-7m-7 7h18" />
-            </svg>
-            Back to Home
-          </a>
+          <svg className="w-4 h-4 mr-2" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+            <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M10 19l-7-7m0 0l7-7m-7 7h18" />
+          </svg>
+          Back to Home
         </Link>
       </div>
-
       <div className="flex min-h-screen items-center justify-center py-12 px-6">
         <div className="w-full max-w-md">
           {/* Header */}
@@ -194,15 +191,15 @@ const Login = () => {
                         Your account exists but needs email confirmation. Please check your email and click the confirmation link.
                       </p>
                       <div className="space-y-1">
-                        <Link href="/signup">
-                          <span className="block text-sm text-indigo-600 hover:text-indigo-500 underline">
+                        <Link href="/signup" legacyBehavior>
+                          <span className="block text-sm text-red-500 hover:text-red-400 underline">
                             Need to create a new account? Sign up here
                           </span>
                         </Link>
                         <button 
                           type="button"
                           onClick={handleResendConfirmation}
-                          className="block text-sm text-indigo-600 hover:text-indigo-500 underline"
+                          className="block text-sm text-red-500 hover:text-red-400 underline"
                         >
                           Resend confirmation email
                         </button>
@@ -248,11 +245,9 @@ const Login = () => {
               <div className="mt-6">
                 <Link
                   href="/signup"
-                  legacyBehavior
+                  className="w-full flex justify-center py-2 px-4 border border-red-500/20 rounded-md shadow-sm text-sm font-medium text-gray-300 bg-black hover:bg-red-500/10 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-red-500 font-geist"
                 >
-                  <a className="w-full flex justify-center py-2 px-4 border border-red-500/20 rounded-md shadow-sm text-sm font-medium text-gray-300 bg-black hover:bg-red-500/10 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-red-500 font-geist">
-                    Create account
-                  </a>
+                  Create account
                 </Link>
               </div>
             </div>
@@ -260,7 +255,7 @@ const Login = () => {
         </div>
       </div>
     </div>
-  )
+  );
 }
 
 export default Login

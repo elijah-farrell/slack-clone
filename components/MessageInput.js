@@ -2,7 +2,7 @@ import { useState, useRef, useEffect } from 'react'
 import { Button } from '~/components/ui/button'
 import { Send } from 'lucide-react'
 
-const MessageInput = ({ onSubmit }) => {
+const MessageInput = ({ onSubmit, channelName }) => {
   const [messageText, setMessageText] = useState('')
   const textareaRef = useRef(null)
 
@@ -35,26 +35,28 @@ const MessageInput = ({ onSubmit }) => {
   }
 
   return (
-    <div className="flex items-end gap-2 p-4 border-t border-border bg-background">
-      <div className="flex-1 relative">
-        <textarea
-          ref={textareaRef}
-          className="w-full resize-none rounded-lg border border-input bg-background px-3 py-2 text-sm placeholder:text-muted-foreground focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-ring focus-visible:ring-offset-2 disabled:cursor-not-allowed disabled:opacity-50 min-h-[44px] max-h-[120px]"
-          placeholder="Send a message..."
-          value={messageText}
-          onChange={(e) => setMessageText(e.target.value)}
-          onKeyDown={handleKeyDown}
-          rows={1}
-        />
+    <div className="px-4 py-4 bg-black message-input">
+      <div className="max-w-4xl mx-auto">
+        <div className="relative">
+          <textarea
+            ref={textareaRef}
+            className="w-full resize-none rounded-2xl border border-red-500/30 bg-black px-4 py-3 pr-12 text-sm text-white placeholder:text-gray-500 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-red-500 focus-visible:ring-offset-2 disabled:cursor-not-allowed disabled:opacity-50 min-h-[52px] max-h-[200px] overflow-hidden shadow-2xl shadow-red-500/10"
+            placeholder={`Message ${channelName || 'Spark Chat'}...`}
+            value={messageText}
+            onChange={(e) => setMessageText(e.target.value)}
+            onKeyDown={handleKeyDown}
+            rows={1}
+          />
+          <Button
+            onClick={handleSubmit}
+            disabled={!messageText.trim()}
+            size="icon"
+            className="absolute right-1 top-1 h-10 w-10 rounded-xl bg-red-500 hover:bg-red-600 text-white flex-shrink-0 shadow-lg transition-all duration-200 hover:scale-105"
+          >
+            <Send className="w-4 h-4" />
+          </Button>
+        </div>
       </div>
-      <Button
-        onClick={handleSubmit}
-        disabled={!messageText.trim()}
-        size="icon"
-        className="h-11 w-11 rounded-lg"
-      >
-        <Send className="w-4 h-4" />
-      </Button>
     </div>
   )
 }
