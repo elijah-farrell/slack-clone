@@ -8,9 +8,9 @@ This is a full-stack Slack clone example using:
 - Backend:
   - [supabase.com/dashboard](https://supabase.com/dashboard/): hosted Postgres database with restful API for usage with Supabase.js.
 
-## Demo
+## Live Demo
 
-- CodeSandbox: https://codesandbox.io/s/github/supabase/supabase/tree/master/examples/nextjs-slack-clone
+- This site will be live eventually (domain not chosen yet)
 
 ![Demo animation gif](./public/slack-clone-demo.gif)
 

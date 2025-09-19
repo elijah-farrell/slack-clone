@@ -34,7 +34,7 @@ export default function SupabaseSlackClone({ Component, pageProps }) {
         setUser(null)
         setUserLoaded(false)
         // Redirect from protected routes to landing page
-        if (router.pathname !== '/' && router.pathname !== '/signup' && router.pathname !== '/login' && router.pathname !== '/demo') {
+        if (router.pathname !== '/' && router.pathname !== '/signup' && router.pathname !== '/login') {
           router.push('/')
         }
       }
