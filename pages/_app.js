@@ -78,14 +78,16 @@ export default function SupabaseSlackClone({ Component, pageProps }) {
   }
 
   return (
-    <UserContext.Provider
-      value={{
-        userLoaded,
-        user,
-        signOut,
-      }}
-    >
-      <Component {...pageProps} />
-    </UserContext.Provider>
+    <div className="antialiased dark">
+      <UserContext.Provider
+        value={{
+          userLoaded,
+          user,
+          signOut,
+        }}
+      >
+        <Component {...pageProps} />
+      </UserContext.Provider>
+    </div>
   )
 }
