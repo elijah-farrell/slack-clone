@@ -5,39 +5,39 @@ import { MessageSquare, Shield, Globe, Zap, Link, Target } from "lucide-react"
 const features = [
   {
     title: "Real-time Messaging",
-    description: "Send and receive messages instantly with live updates. See when others are typing and get notified of new messages in real-time.",
+    description: "Send and receive messages instantly with live updates. Messages appear immediately across all connected devices.",
     icon: MessageSquare,
     badge: "Real-time",
   },
   {
-    title: "Secure Channels",
-    description: "Create public and private channels with role-based permissions. Control who can access what with enterprise-grade security.",
+    title: "Public Channels",
+    description: "Create channels to organize conversations by topic. All users can join and participate in public channels.",
+    icon: Globe,
+    badge: "Channels",
+  },
+  {
+    title: "User Authentication",
+    description: "Simple sign-up and login system. Create an account with email and password to start messaging.",
     icon: Shield,
     badge: "Secure",
   },
   {
-    title: "Team Collaboration",
-    description: "Organize conversations by topic, invite team members, and keep everyone in the loop with persistent message history.",
-    icon: Globe,
-    badge: "Collaborative",
-  },
-  {
-    title: "Instant Notifications",
-    description: "Never miss important messages with real-time notifications. Stay connected with your team wherever you are.",
+    title: "Message History",
+    description: "All messages are saved and persistent. See conversation history when you return to channels.",
     icon: Zap,
-    badge: "Notifications",
+    badge: "Persistent",
   },
   {
-    title: "User Management",
-    description: "Easy sign-up and authentication system. Manage user profiles, avatars, and team member access seamlessly.",
+    title: "User Identification",
+    description: "Each message shows who sent it with a colored avatar (first letter of email) and username (email address).",
     icon: Link,
-    badge: "User-friendly",
+    badge: "Users",
   },
   {
-    title: "Modern Interface",
-    description: "Clean, responsive design that works perfectly on desktop and mobile. Intuitive navigation and beautiful UI.",
+    title: "Responsive Design",
+    description: "Works perfectly on desktop and mobile devices. Clean interface that adapts to any screen size.",
     icon: Target,
-    badge: "Modern",
+    badge: "Mobile",
   },
 ]
 

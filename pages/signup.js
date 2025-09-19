@@ -131,34 +131,42 @@ const Signup = () => {
   }
 
   return (
-    <div className="min-h-screen bg-gray-50 flex flex-col justify-center py-12 sm:px-6 lg:px-8">
+    <div className="min-h-screen bg-black">
       {/* Back to Home Button */}
-      <div className="absolute top-4 left-4">
+      <div className="absolute top-4 left-4 z-10">
         <Link
           href="/"
-          className="inline-flex items-center px-4 py-2 text-sm font-medium text-gray-600 bg-white border border-gray-300 rounded-md hover:bg-gray-50 hover:text-gray-800 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-indigo-500 transition-colors"
+          legacyBehavior
         >
-          ← Back to Home
+          <a className="inline-flex items-center px-4 py-2 text-sm font-medium text-gray-300 bg-black border border-red-500/20 rounded-md hover:bg-red-500/10 hover:text-red-400 focus:outline-none focus:ring-2 focus:ring-red-500 transition-colors font-geist">
+            <svg className="w-4 h-4 mr-2" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+              <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M10 19l-7-7m0 0l7-7m-7 7h18" />
+            </svg>
+            Back to Home
+          </a>
         </Link>
       </div>
 
-      <div className="sm:mx-auto sm:w-full sm:max-w-md">
-        <h2 className="mt-6 text-center text-3xl font-extrabold text-gray-900">
-          Create your account
-        </h2>
-        <p className="mt-2 text-center text-sm text-gray-600">
-          Or{' '}
-          <Link href="/login" className="font-medium text-indigo-600 hover:text-indigo-500">
-            sign in to your existing account
-          </Link>
-        </p>
-      </div>
+      <div className="flex min-h-screen items-center justify-center py-12 px-6">
+        <div className="w-full max-w-md">
+          {/* Header */}
+          <div className="text-center mb-8">
+            <div className="w-16 h-16 bg-gradient-to-br from-red-500 to-red-600 rounded-2xl flex items-center justify-center mx-auto mb-4">
+              <span className="text-white font-bold text-2xl font-orbitron">S</span>
+            </div>
+            <h2 className="text-3xl font-bold text-white mb-2 font-orbitron">
+              Create your account
+            </h2>
+            <p className="text-gray-300 font-geist">
+              Join Spark Chat today
+            </p>
+          </div>
 
-      <div className="mt-8 sm:mx-auto sm:w-full sm:max-w-md">
-        <div className="bg-white py-8 px-4 shadow sm:rounded-lg sm:px-10">
+          {/* Form Card */}
+          <div className="bg-black border border-red-500/20 rounded-2xl shadow-xl p-8">
           <form className="space-y-6" onSubmit={handleSignup}>
             <div>
-              <label htmlFor="email" className="block text-sm font-medium text-gray-700">
+              <label htmlFor="email" className="block text-sm font-medium text-gray-300 font-geist">
                 Email address
               </label>
               <div className="mt-1">
@@ -168,7 +176,7 @@ const Signup = () => {
                   type="email"
                   autoComplete="email"
                   required
-                  className="appearance-none block w-full px-3 py-2 border border-gray-300 rounded-md placeholder-gray-400 focus:outline-none focus:ring-indigo-500 focus:border-indigo-500 sm:text-sm"
+                  className="appearance-none block w-full px-3 py-2 bg-black border border-red-500/20 rounded-md placeholder-gray-500 text-white focus:outline-none focus:ring-red-500 focus:border-red-500 sm:text-sm font-geist"
                   placeholder="your.email@example.com"
                                       value={email}
                     onChange={(e) => {
@@ -181,7 +189,7 @@ const Signup = () => {
             </div>
 
             <div>
-              <label htmlFor="password" className="block text-sm font-medium text-gray-700">
+              <label htmlFor="password" className="block text-sm font-medium text-gray-300 font-geist">
                 Password
               </label>
               <div className="mt-1">
@@ -191,18 +199,18 @@ const Signup = () => {
                   type="password"
                   autoComplete="new-password"
                   required
-                  className="appearance-none block w-full px-3 py-2 border border-gray-300 rounded-md placeholder-gray-400 focus:outline-none focus:ring-indigo-500 focus:border-indigo-500 sm:text-sm"
+                  className="appearance-none block w-full px-3 py-2 bg-black border border-red-500/20 rounded-md placeholder-gray-500 text-white focus:outline-none focus:ring-red-500 focus:border-red-500 sm:text-sm font-geist"
                   placeholder="Create a password"
                   value={password}
                   onChange={(e) => setPassword(e.target.value)}
                   disabled={isLoading}
                 />
               </div>
-              <p className="mt-1 text-xs text-gray-500">Must be at least 6 characters long</p>
+              <p className="mt-1 text-xs text-gray-400 font-geist">Must be at least 6 characters long</p>
             </div>
 
             <div>
-              <label htmlFor="confirmPassword" className="block text-sm font-medium text-gray-700">
+              <label htmlFor="confirmPassword" className="block text-sm font-medium text-gray-300 font-geist">
                 Confirm Password
               </label>
               <div className="mt-1">
@@ -212,7 +220,7 @@ const Signup = () => {
                   type="password"
                   autoComplete="new-password"
                   required
-                  className="appearance-none block w-full px-3 py-2 border border-gray-300 rounded-md placeholder-gray-400 focus:outline-none focus:ring-indigo-500 focus:border-indigo-500 sm:text-sm"
+                  className="appearance-none block w-full px-3 py-2 bg-black border border-red-500/20 rounded-md placeholder-gray-500 text-white focus:outline-none focus:ring-red-500 focus:border-red-500 sm:text-sm font-geist"
                   placeholder="Confirm your password"
                   value={confirmPassword}
                   onChange={(e) => setConfirmPassword(e.target.value)}
@@ -226,8 +234,10 @@ const Signup = () => {
                   <div className="text-sm text-red-700">{error}</div>
                   {error.includes('already exists') && (
                     <div className="mt-3 space-y-2">
-                      <Link href="/login" className="block text-sm text-indigo-600 hover:text-indigo-500 underline">
-                        Sign in to your account ↗
+                      <Link href="/login">
+                        <span className="block text-sm text-indigo-600 hover:text-indigo-500 underline">
+                          Sign in to your account ↗
+                        </span>
                       </Link>
                       <p className="text-xs text-gray-600">
                         Forgot your password? <a href="mailto:farrellelijah@outlook.com?subject=Password%20Reset%20Request%20-%20Spark%20App&body=Hey%21%20I%20am%20having%20trouble%20logging%20into%20my%20Spark%20account.%20I%20forgot%20my%20password%20and%20need%20assistance%20to%20reset%20it.%0A%0AEmail%20address%20on%20file%3A%20%0A%0AThank%20you%20for%20your%20help%21" className="underline hover:text-gray-500">Contact support for assistance</a>
@@ -236,8 +246,10 @@ const Signup = () => {
                   )}
                   {!error.includes('already exists') && (
                     <div className="mt-3">
-                      <Link href="/login" className="block text-sm text-indigo-600 hover:text-indigo-500 underline">
-                        Already have an account? Sign in here ↗
+                      <Link href="/login">
+                        <span className="block text-sm text-indigo-600 hover:text-indigo-500 underline">
+                          Already have an account? Sign in here ↗
+                        </span>
                       </Link>
                     </div>
                   )}
@@ -260,30 +272,34 @@ const Signup = () => {
               <button
                 type="submit"
                 disabled={isLoading}
-                className="w-full flex justify-center py-2 px-4 border border-transparent rounded-md shadow-sm text-sm font-medium text-white bg-indigo-600 hover:bg-indigo-700 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-indigo-500 disabled:opacity-50 disabled:cursor-not-allowed"
+                className="w-full flex justify-center py-2 px-4 border border-transparent rounded-md shadow-sm text-sm font-medium text-white bg-red-500 hover:bg-red-600 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-red-500 disabled:opacity-50 disabled:cursor-not-allowed font-geist"
               >
                 {isLoading ? 'Creating account...' : 'Create account'}
               </button>
             </div>
           </form>
 
-          <div className="mt-6">
-            <div className="relative">
-              <div className="absolute inset-0 flex items-center">
-                <div className="w-full border-t border-gray-300" />
-              </div>
-              <div className="relative flex justify-center text-sm">
-                <span className="px-2 bg-white text-gray-500">Already have an account?</span>
-              </div>
-            </div>
-
+            {/* Divider */}
             <div className="mt-6">
-              <Link
-                href="/login"
-                className="w-full flex justify-center py-2 px-4 border border-gray-300 rounded-md shadow-sm text-sm font-medium text-gray-700 bg-white hover:bg-gray-50 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-indigo-500"
-              >
-                Sign in
-              </Link>
+              <div className="relative">
+                <div className="absolute inset-0 flex items-center">
+                  <div className="w-full border-t border-red-500/20" />
+                </div>
+                <div className="relative flex justify-center text-sm">
+                  <span className="px-2 bg-black text-gray-400 font-geist">Already have an account?</span>
+                </div>
+              </div>
+
+              <div className="mt-6">
+                <Link
+                  href="/login"
+                  legacyBehavior
+                >
+                  <a className="w-full flex justify-center py-2 px-4 border border-red-500/20 rounded-md shadow-sm text-sm font-medium text-gray-300 bg-black hover:bg-red-500/10 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-red-500 font-geist">
+                    Sign in
+                  </a>
+                </Link>
+              </div>
             </div>
           </div>
         </div>

@@ -42,15 +42,19 @@ export function CyberNavbar() {
 
           {/* CTA Button */}
           <div className="hidden md:flex items-center space-x-4">
-            <Link href="/login">
-              <Button variant="ghost" className="text-white hover:text-red-500 hover:bg-white/10 font-geist">
-                Sign In
-              </Button>
+            <Link href="/login" legacyBehavior>
+              <a>
+                <Button variant="ghost" className="text-white hover:text-red-500 hover:bg-white/10 font-geist">
+                  Sign In
+                </Button>
+              </a>
             </Link>
-            <Link href="/signup">
-              <Button className="bg-red-500 hover:bg-red-600 text-white font-geist border-0">
-                Get Started
-              </Button>
+            <Link href="/signup" legacyBehavior>
+              <a>
+                <Button className="bg-red-500 hover:bg-red-600 text-white font-geist border-0">
+                  Get Started
+                </Button>
+              </a>
             </Link>
           </div>
 
@@ -91,15 +95,19 @@ export function CyberNavbar() {
                 FAQ
               </a>
               <div className="px-3 py-2 space-y-2">
-                <Link href="/login" onClick={() => setIsOpen(false)}>
-                  <Button variant="ghost" className="w-full text-white hover:text-red-500 hover:bg-white/10 font-geist">
-                    Sign In
-                  </Button>
+                <Link href="/login" legacyBehavior>
+                  <a onClick={() => setIsOpen(false)}>
+                    <Button variant="ghost" className="w-full text-white hover:text-red-500 hover:bg-white/10 font-geist">
+                      Sign In
+                    </Button>
+                  </a>
                 </Link>
-                <Link href="/signup" onClick={() => setIsOpen(false)}>
-                  <Button className="w-full bg-red-500 hover:bg-red-600 text-white font-geist border-0">
-                    Get Started
-                  </Button>
+                <Link href="/signup" legacyBehavior>
+                  <a onClick={() => setIsOpen(false)}>
+                    <Button className="w-full bg-red-500 hover:bg-red-600 text-white font-geist border-0">
+                      Get Started
+                    </Button>
+                  </a>
                 </Link>
               </div>
             </div>

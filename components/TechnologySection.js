@@ -1,5 +1,5 @@
 import { Card, CardContent } from "~/components/ui/card"
-import { Zap, Shield, Globe } from "lucide-react"
+import { Code, Database, Palette } from "lucide-react"
 
 export function TechnologySection() {
   return (
@@ -15,7 +15,7 @@ export function TechnologySection() {
         <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-8">
           <Card className="bg-black border-red-500/20 hover:border-red-500/50 transition-all duration-300">
             <CardContent className="p-8">
-              <Zap className="w-10 h-10 text-red-500 mb-4" />
+              <Code className="w-10 h-10 text-red-500 mb-4" />
               <h3 className="text-xl font-bold text-white mb-3 font-orbitron">Next.js Framework</h3>
               <p className="text-gray-300 leading-relaxed font-geist">
                 React-based framework with server-side rendering for fast loading and SEO optimization.
@@ -25,7 +25,7 @@ export function TechnologySection() {
 
           <Card className="bg-black border-red-500/20 hover:border-red-500/50 transition-all duration-300">
             <CardContent className="p-8">
-              <Shield className="w-10 h-10 text-red-500 mb-4" />
+              <Database className="w-10 h-10 text-red-500 mb-4" />
               <h3 className="text-xl font-bold text-white mb-3 font-orbitron">Supabase Database</h3>
               <p className="text-gray-300 leading-relaxed font-geist">
                 PostgreSQL database with real-time subscriptions, Row Level Security, and built-in auth.
@@ -35,7 +35,7 @@ export function TechnologySection() {
 
           <Card className="bg-black border-red-500/20 hover:border-red-500/50 transition-all duration-300">
             <CardContent className="p-8">
-              <Globe className="w-10 h-10 text-red-500 mb-4" />
+              <Palette className="w-10 h-10 text-red-500 mb-4" />
               <h3 className="text-xl font-bold text-white mb-3 font-orbitron">Modern UI Stack</h3>
               <p className="text-gray-300 leading-relaxed font-geist">
                 Tailwind CSS for styling, shadcn/ui components, and Lucide icons for a polished interface.

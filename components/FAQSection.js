@@ -8,14 +8,14 @@ export function FAQSection() {
         "Sign up with your email address and password. You'll receive a confirmation email - click the link to activate your account. Check your spam folder if you don't see it.",
     },
     {
-      question: "What are user roles and permissions?",
+      question: "Can I delete messages?",
       answer:
-        "Spark Chat has admin and moderator roles. Admins can delete any channel or message, while moderators can delete messages. Regular users can only delete their own messages. Role assignment is currently managed by administrators.",
+        "Yes, you can delete your own messages by hovering over them and clicking the trash icon. Platform moderators can also delete messages from any user to help maintain conversation quality.",
     },
     {
       question: "Can I create private channels?",
       answer:
-        "Absolutely! You can create both public and private channels with role-based permissions to control access and maintain team privacy.",
+        "Currently, Spark Chat supports public channels only. All users can join and participate in any channel. Private channels may be added in future updates.",
     },
     {
       question: "How does real-time messaging work?",
@@ -28,9 +28,9 @@ export function FAQSection() {
         "All messages are stored persistently in our secure database. When you come back online, you'll see all messages that were sent while you were away.",
     },
     {
-      question: "Is Spark Chat secure for business use?",
+      question: "Is Spark Chat secure?",
       answer:
-        "Yes, Spark Chat uses enterprise-grade security with Row Level Security, JWT authentication, and encrypted data transmission for complete business protection.",
+        "Spark Chat uses Supabase's built-in security features including Row Level Security, JWT authentication, and encrypted data transmission. It's suitable for team communication and personal use.",
     },
   ]
 

@@ -109,19 +109,19 @@ const Login = () => {
   }
 
   return (
-    <div className="min-h-screen bg-gradient-to-br from-slate-50 via-blue-50 to-indigo-100">
+    <div className="min-h-screen bg-black">
       {/* Back to Home Button */}
-      <div className="absolute top-6 left-6 z-10">
+      <div className="absolute top-4 left-4 z-10">
         <Link
           href="/"
-          className="inline-flex items-center px-4 py-2 text-sm font-medium text-gray-600 bg-white/80 backdrop-blur-sm border border-gray-200 rounded-lg hover:bg-white hover:text-indigo-600 hover:border-indigo-300 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-indigo-500 transition-all duration-200"
+          legacyBehavior
         >
-          <div className="flex items-center">
+          <a className="inline-flex items-center px-4 py-2 text-sm font-medium text-gray-300 bg-black border border-red-500/20 rounded-md hover:bg-red-500/10 hover:text-red-400 focus:outline-none focus:ring-2 focus:ring-red-500 transition-colors font-geist">
             <svg className="w-4 h-4 mr-2" fill="none" stroke="currentColor" viewBox="0 0 24 24">
               <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M10 19l-7-7m0 0l7-7m-7 7h18" />
             </svg>
             Back to Home
-          </div>
+          </a>
         </Link>
       </div>
 
@@ -129,74 +129,60 @@ const Login = () => {
         <div className="w-full max-w-md">
           {/* Header */}
           <div className="text-center mb-8">
-            <div className="w-16 h-16 bg-gradient-to-br from-indigo-600 to-purple-600 rounded-2xl flex items-center justify-center mx-auto mb-4">
-              <span className="text-white font-bold text-2xl">S</span>
+            <div className="w-16 h-16 bg-gradient-to-br from-red-500 to-red-600 rounded-2xl flex items-center justify-center mx-auto mb-4">
+              <span className="text-white font-bold text-2xl font-orbitron">S</span>
             </div>
-            <h2 className="text-3xl font-bold text-gray-900 mb-2">
+            <h2 className="text-3xl font-bold text-white mb-2 font-orbitron">
               Welcome back
             </h2>
-            <p className="text-gray-600">
+            <p className="text-gray-300 font-geist">
               Sign in to your Spark account
             </p>
           </div>
 
           {/* Form Card */}
-          <div className="bg-white/80 backdrop-blur-sm rounded-2xl shadow-xl border border-white/20 p-8">
+          <div className="bg-black border border-red-500/20 rounded-2xl shadow-xl p-8">
             <form className="space-y-6" onSubmit={handleLogin}>
               <div>
-                <label htmlFor="email" className="block text-sm font-medium text-gray-700 mb-2">
+                <label htmlFor="email" className="block text-sm font-medium text-gray-300 mb-2 font-geist">
                   Email address
                 </label>
-                <div className="relative">
-                  <div className="absolute inset-y-0 left-0 pl-3 flex items-center pointer-events-none">
-                    <svg className="h-5 w-5 text-gray-400" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                      <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M16 12a4 4 0 10-8 0 4 4 0 008 0zm0 0v1.5a2.5 2.5 0 005 0V12a9 9 0 10-9 9m4.5-1.206a8.959 8.959 0 01-4.5 1.207" />
-                    </svg>
-                  </div>
-                  <input
-                    id="email"
-                    name="email"
-                    type="email"
-                    autoComplete="email"
-                    required
-                    className="block w-full pl-10 pr-3 py-3 border border-gray-300 rounded-xl placeholder-gray-400 focus:outline-none focus:ring-2 focus:ring-indigo-500 focus:border-indigo-500 transition-colors"
-                    placeholder="your.email@example.com"
-                    value={email}
-                    onChange={(e) => {
-                      setEmail(e.target.value)
-                      setSuccess('') // Clear success message when user types
-                    }}
-                    disabled={isLoading}
-                  />
-                </div>
+                <input
+                  id="email"
+                  name="email"
+                  type="email"
+                  autoComplete="email"
+                  required
+                  className="block w-full px-3 py-3 bg-black border border-red-500/20 rounded-md placeholder-gray-500 text-white focus:outline-none focus:ring-red-500 focus:border-red-500 transition-colors font-geist"
+                  placeholder="your.email@example.com"
+                  value={email}
+                  onChange={(e) => {
+                    setEmail(e.target.value)
+                    setSuccess('') // Clear success message when user types
+                  }}
+                  disabled={isLoading}
+                />
               </div>
 
               <div>
-                <label htmlFor="password" className="block text-sm font-medium text-gray-700 mb-2">
+                <label htmlFor="password" className="block text-sm font-medium text-gray-300 mb-2 font-geist">
                   Password
                 </label>
-                <div className="relative">
-                  <div className="absolute inset-y-0 left-0 pl-3 flex items-center pointer-events-none">
-                    <svg className="h-5 w-5 text-gray-400" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                      <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M12 15v2m-6 4h12a2 2 0 002-2v-6a2 2 0 00-2-2H6a2 2 0 00-2 2v6a2 2 0 002 2zm10-10V7a4 4 0 00-8 0v4h8z" />
-                    </svg>
-                  </div>
-                  <input
-                    id="password"
-                    name="password"
-                    type="password"
-                    autoComplete="current-password"
-                    required
-                    className="block w-full pl-10 pr-3 py-3 border border-gray-300 rounded-xl placeholder-gray-400 focus:outline-none focus:ring-2 focus:ring-indigo-500 focus:border-indigo-500 transition-colors"
-                    placeholder="Enter your password"
-                    value={password}
-                    onChange={(e) => {
-                      setPassword(e.target.value)
-                      setSuccess('') // Clear success message when user types
-                    }}
-                    disabled={isLoading}
-                  />
-                </div>
+                <input
+                  id="password"
+                  name="password"
+                  type="password"
+                  autoComplete="current-password"
+                  required
+                  className="block w-full px-3 py-3 bg-black border border-red-500/20 rounded-md placeholder-gray-500 text-white focus:outline-none focus:ring-red-500 focus:border-red-500 transition-colors font-geist"
+                  placeholder="Enter your password"
+                  value={password}
+                  onChange={(e) => {
+                    setPassword(e.target.value)
+                    setSuccess('') // Clear success message when user types
+                  }}
+                  disabled={isLoading}
+                />
               </div>
 
               {error && (
@@ -208,8 +194,10 @@ const Login = () => {
                         Your account exists but needs email confirmation. Please check your email and click the confirmation link.
                       </p>
                       <div className="space-y-1">
-                        <Link href="/signup" className="block text-sm text-indigo-600 hover:text-indigo-500 underline">
-                          Need to create a new account? Sign up here
+                        <Link href="/signup">
+                          <span className="block text-sm text-indigo-600 hover:text-indigo-500 underline">
+                            Need to create a new account? Sign up here
+                          </span>
                         </Link>
                         <button 
                           type="button"
@@ -239,40 +227,32 @@ const Login = () => {
                 <button
                   type="submit"
                   disabled={isLoading}
-                  className="w-full flex justify-center items-center py-3 px-4 border border-transparent rounded-xl shadow-lg text-base font-semibold text-white bg-gradient-to-r from-indigo-600 to-purple-600 hover:from-indigo-700 hover:to-purple-700 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-indigo-500 disabled:opacity-50 disabled:cursor-not-allowed transform hover:scale-105 transition-all duration-200"
+                  className="w-full flex justify-center py-2 px-4 border border-transparent rounded-md shadow-sm text-sm font-medium text-white bg-red-500 hover:bg-red-600 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-red-500 disabled:opacity-50 disabled:cursor-not-allowed font-geist"
                 >
-                  {isLoading ? (
-                    <>
-                      <svg className="animate-spin -ml-1 mr-3 h-5 w-5 text-white" fill="none" viewBox="0 0 24 24">
-                        <circle className="opacity-25" cx="12" cy="12" r="10" stroke="currentColor" strokeWidth="4"></circle>
-                        <path className="opacity-75" fill="currentColor" d="M4 12a8 8 0 018-8V0C5.373 0 0 5.373 0 12h4zm2 5.291A7.962 7.962 0 014 12H0c0 3.042 1.135 5.824 3 7.938l3-2.647z"></path>
-                      </svg>
-                      Signing in...
-                    </>
-                  ) : (
-                    'Sign in'
-                  )}
+                  {isLoading ? 'Signing in...' : 'Sign in'}
                 </button>
               </div>
             </form>
 
             {/* Divider */}
-            <div className="mt-8">
+            <div className="mt-6">
               <div className="relative">
                 <div className="absolute inset-0 flex items-center">
-                  <div className="w-full border-t border-gray-200" />
+                  <div className="w-full border-t border-red-500/20" />
                 </div>
                 <div className="relative flex justify-center text-sm">
-                  <span className="px-4 bg-white/80 text-gray-500">New to Spark?</span>
+                  <span className="px-2 bg-black text-gray-400 font-geist">New to Spark?</span>
                 </div>
               </div>
 
               <div className="mt-6">
                 <Link
                   href="/signup"
-                  className="w-full flex justify-center py-3 px-4 border-2 border-indigo-200 rounded-xl text-base font-semibold text-indigo-600 bg-white hover:bg-indigo-50 hover:border-indigo-300 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-indigo-500 transition-all duration-200"
+                  legacyBehavior
                 >
-                  Create account
+                  <a className="w-full flex justify-center py-2 px-4 border border-red-500/20 rounded-md shadow-sm text-sm font-medium text-gray-300 bg-black hover:bg-red-500/10 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-red-500 font-geist">
+                    Create account
+                  </a>
                 </Link>
               </div>
             </div>

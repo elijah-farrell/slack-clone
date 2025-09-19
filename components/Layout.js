@@ -111,7 +111,7 @@ export default function Layout(props) {
 
 const SidebarItem = ({ channel, isActiveChannel, user }) => (
   <div className="group flex items-center justify-between rounded-md px-2 py-1.5 text-sm hover:bg-sidebar-accent hover:text-sidebar-accent-foreground">
-    <Link href="/channels/[id]" as={`/channels/${channel.id}`}>
+    <Link href="/channels/[id]" as={`/channels/${channel.id}`} legacyBehavior>
       <a className={cn(
         "flex items-center gap-2 flex-1 min-w-0",
         isActiveChannel && "font-semibold text-sidebar-accent-foreground"

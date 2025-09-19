@@ -12,22 +12,26 @@ export function CTASection() {
             here—are you ready to be part of it?
           </p>
           <div className="flex flex-col sm:flex-row gap-4 justify-center">
-            <Link href="/signup">
-              <Button
-                size="lg"
-                className="bg-red-500 text-white hover:bg-red-600 pulse-button text-lg px-8 py-4 font-geist"
-              >
-                Sign Up
-              </Button>
+            <Link href="/signup" legacyBehavior>
+              <a>
+                <Button
+                  size="lg"
+                  className="bg-red-500 text-white hover:bg-red-600 pulse-button text-lg px-8 py-4 font-geist"
+                >
+                  Sign Up
+                </Button>
+              </a>
             </Link>
-            <Link href="/login">
-              <Button
-                size="lg"
-                variant="outline"
-                className="border-red-500 text-red-500 hover:bg-red-500 hover:text-white text-lg px-8 py-4 bg-transparent font-geist"
-              >
-                Log In
-              </Button>
+            <Link href="/login" legacyBehavior>
+              <a>
+                <Button
+                  size="lg"
+                  variant="outline"
+                  className="border-red-500 text-red-500 hover:bg-red-500 hover:text-white text-lg px-8 py-4 bg-transparent font-geist"
+                >
+                  Log In
+                </Button>
+              </a>
             </Link>
           </div>
         </div>
