@@ -1,3 +1,4 @@
+import Head from 'next/head'
 import Layout from '~/components/Layout'
 import Message from '~/components/Message'
 import MessageInput from '~/components/MessageInput'
@@ -61,9 +62,17 @@ const ChannelsPage = (props) => {
     )
   }
 
+  // Get the current channel name
+  const currentChannel = channels?.find(c => c.id === parseInt(channelId))
+  const channelName = currentChannel ? `#${currentChannel.slug}` : 'Channels'
+
   // Render the channels and messages
   return (
-    <Layout channels={channels} activeChannelId={channelId}>
+    <>
+      <Head>
+        <title>SparkChat | {channelName}</title>
+      </Head>
+      <Layout channels={channels} activeChannelId={channelId}>
       <div className="flex flex-col h-full bg-black">
         {/* Messages Area */}
         <div className="flex-1 overflow-hidden pt-16">
@@ -97,7 +106,8 @@ const ChannelsPage = (props) => {
           channelName={channels?.find(c => c.id === parseInt(channelId))?.slug}
         />
       </div>
-    </Layout>
+      </Layout>
+    </>
   )
 }
 

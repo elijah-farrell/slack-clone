@@ -63,22 +63,44 @@ export default function Layout(props) {
 
   return (
     <div className="flex h-screen w-screen overflow-hidden bg-background">
+      {/* Mobile backdrop */}
+      {sidebarOpen && (
+        <div 
+          className="fixed inset-0 bg-black/50 z-40 md:hidden"
+          onClick={() => setSidebarOpen(false)}
+        />
+      )}
+      
       {/* Sidebar */}
       <nav 
         className={cn(
           "text-white flex flex-col transition-all duration-300 bg-[#171717]",
-          sidebarOpen ? "w-64" : "w-0 overflow-hidden"
+          sidebarOpen ? "w-64" : "w-0 overflow-hidden",
+          "md:relative absolute inset-y-0 left-0 z-50 md:z-auto"
         )}
       >
         {sidebarOpen && (
           <div className="flex flex-col h-full border-r border-red-500/20">
             {/* Header */}
             <div className="p-4">
-              <div className="flex items-center gap-2">
-                <div className="w-8 h-8 bg-gradient-to-br from-red-500 to-red-600 rounded-lg flex items-center justify-center">
-                  <MessageSquare className="w-5 h-5 text-white" />
+              <div className="flex items-center justify-between">
+                <div className="flex items-center gap-2">
+                  <img 
+                    src="/spark.png" 
+                    alt="SparkChat Logo" 
+                    className="w-8 h-8"
+                  />
+                  <span className="font-semibold text-lg">SparkChat</span>
                 </div>
-                <span className="font-semibold text-lg">Spark</span>
+                {/* Mobile close button */}
+                <button
+                  onClick={() => setSidebarOpen(false)}
+                  className="md:hidden p-1 hover:bg-red-500/20 rounded-md transition-colors"
+                >
+                  <svg className="w-5 h-5 text-white" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                    <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M6 18L18 6M6 6l12 12" />
+                  </svg>
+                </button>
               </div>
             </div>
 
@@ -91,9 +113,9 @@ export default function Layout(props) {
                     onClick={() => setNewChannelDialogOpen(true)}
                     className="h-6 px-2 bg-red-500 hover:bg-red-600 text-white rounded text-xs"
                     size="sm"
+                    title="Add new channel"
                   >
-                    <Plus className="w-3 h-3 mr-1" />
-                    New
+                    <Plus className="w-3 h-3" />
                   </Button>
                 </div>
                 <ScrollArea className="h-full">
@@ -102,7 +124,7 @@ export default function Layout(props) {
                       <SidebarItem
                         channel={channel}
                         key={channel.id}
-                        isActiveChannel={channel.id === props.activeChannelId}
+                        isActiveChannel={channel.id === parseInt(props.activeChannelId)}
                         user={user}
                         onDelete={handleDeleteChannel}
                       />
@@ -190,16 +212,24 @@ export default function Layout(props) {
 }
 
 const SidebarItem = ({ channel, isActiveChannel, user, onDelete }) => (
-  <div className="group flex items-center justify-between rounded-md px-2 py-1.5 text-sm hover:bg-red-500/10 hover:text-red-400 text-gray-300">
+  <div className={cn(
+    "group flex items-center justify-between rounded-md px-2 py-1.5 text-sm transition-all duration-200",
+    isActiveChannel 
+      ? "bg-red-500/20 border-l-2 border-red-500 text-red-400" 
+      : "hover:bg-red-500/10 hover:text-red-400 text-gray-300"
+  )}>
     <Link 
       href="/channels/[id]" 
       as={`/channels/${channel.id}`}
       className={cn(
         "flex items-center gap-2 flex-1 min-w-0",
-        isActiveChannel && "font-semibold text-red-400"
+        isActiveChannel && "font-semibold"
       )}
     >
-      <Hash className="w-4 h-4 flex-shrink-0" />
+      <Hash className={cn(
+        "w-4 h-4 flex-shrink-0",
+        isActiveChannel && "text-red-400"
+      )} />
       <span className="truncate">{channel.slug}</span>
     </Link>
     {channel.id !== 1 && (channel.created_by === user?.id || user?.appRole === 'admin') && (

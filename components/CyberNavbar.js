@@ -13,9 +13,14 @@ export function CyberNavbar() {
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
         <div className="flex items-center justify-between h-16">
           {/* Logo */}
-          <div className="flex-shrink-0">
+          <div className="flex-shrink-0 flex items-center gap-2">
+            <img 
+              src="/spark.png" 
+              alt="SparkChat Logo" 
+              className="w-8 h-8"
+            />
             <h1 className="font-orbitron text-xl font-bold text-white">
-              Spark<span className="text-red-500">Chat</span>
+              SparkChat
             </h1>
           </div>
 

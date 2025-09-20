@@ -1,4 +1,5 @@
 import { useState } from 'react'
+import Head from 'next/head'
 import { supabase } from 'lib/Store'
 import Link from 'next/link'
 import { useRouter } from 'next/router'
@@ -109,7 +110,11 @@ const Login = () => {
   }
 
   return (
-    <div className="min-h-screen bg-black">
+    <>
+      <Head>
+        <title>SparkChat | Sign In</title>
+      </Head>
+      <div className="min-h-screen bg-black">
       {/* Back to Home Button */}
       <div className="absolute top-4 left-4 z-10">
         <Link
@@ -254,7 +259,8 @@ const Login = () => {
           </div>
         </div>
       </div>
-    </div>
+      </div>
+    </>
   );
 }
 

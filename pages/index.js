@@ -1,3 +1,4 @@
+import Head from 'next/head'
 import { CyberNavbar } from '~/components/CyberNavbar'
 import { Hero3D } from '~/components/Hero3D'
 import { FeaturesSection } from '~/components/FeaturesSection'
@@ -8,8 +9,12 @@ import { Footer } from '~/components/Footer'
 
 const Home = () => {
   return (
-    <main className="min-h-screen bg-black">
-      <CyberNavbar />
+    <>
+      <Head>
+        <title>SparkChat</title>
+      </Head>
+      <main className="min-h-screen bg-black">
+        <CyberNavbar />
       <Hero3D />
       <section id="features">
         <FeaturesSection />
@@ -21,8 +26,9 @@ const Home = () => {
         <FAQSection />
       </section>
       <CTASection />
-      <Footer />
-    </main>
+        <Footer />
+      </main>
+    </>
   )
 }
 
