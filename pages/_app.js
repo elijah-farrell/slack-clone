@@ -48,7 +48,10 @@ export default function SupabaseSlackClone({ Component, pageProps }) {
     try {
       const { subscription } = supabase.auth.onAuthStateChange(
         async (event, session) => {
-          console.log('Auth state change:', event, session)
+          // Only log errors in development
+          if (process.env.NODE_ENV === 'development' && event === 'SIGNED_OUT' && !session) {
+            console.log('User signed out')
+          }
           saveSession(session)
         }
       )

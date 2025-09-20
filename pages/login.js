@@ -92,13 +92,14 @@ const Login = () => {
         }
       } else if (user) {
         // Login successful - user will be redirected by _app.js
-        console.log('Login successful')
         // Clear form
         setEmail('')
         setPassword('')
       }
     } catch (error) {
-      console.log('error', error)
+      if (process.env.NODE_ENV === 'development') {
+        console.log('Login error:', error)
+      }
       if (error.message?.includes('network') || error.message?.includes('fetch')) {
         setError('Network error. Please check your connection and try again.')
       } else {

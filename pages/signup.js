@@ -120,7 +120,9 @@ const Signup = () => {
         setConfirmPassword('')
       }
     } catch (error) {
-      console.log('Caught error:', error)
+      if (process.env.NODE_ENV === 'development') {
+        console.log('Signup error:', error)
+      }
       if (error.message?.includes('network') || error.message?.includes('fetch')) {
         setError('Network error. Please check your connection and try again.')
       } else {
